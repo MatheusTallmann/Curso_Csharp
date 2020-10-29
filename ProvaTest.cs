@@ -6,16 +6,21 @@ namespace Prova
     public class ProvaTest
     {
         [Theory]
-        [InlineData]
-        public void deve_retornar_o_total_de_dinheiro_que_o_usuario_ganha_num_dia_trabalhando()
+        [InlineData(30, 8, 20, 170)]
+        [InlineData(25, 20, 7, 63874.99999999999)]
+        public void should_return_the_total_money_received_in_a_day_worked(double minutesWorked, double hoursWorked, double hourPrice, double expected)
+        //Solicite ao usuário que informe quantas horas e minutos ele trabalha por dia e qual o valor/hora de seu serviço.
+        //Imprima quanto dinheiro ele ganha ao longo de um dia trabalhado. 
+        //A mensagem impressa ao usuário deve ter, no máximo, duas casas após a vírgula.
         {
-            var letras = new List<string>{"c", "e"};
-            letras.Add("l");
+            // Dado / Setup
+            var exercises = new Exercises();
+            
+            // Quando / Ação
+            var expectedValue = exercises.Prova1(minutesWorked, hoursWorked, hourPrice);
 
-            var prova = new Prova();
-            var palavra = prova.Prova1(letras);
-
-            Assert.Equal("cel", palavra);
+            //Deve / Asserção
+            Assert.Equal(expected, expectedValue);
         }
         [Fact]
         public void deve_retornar_cel_quando_informado_c_e_l()
