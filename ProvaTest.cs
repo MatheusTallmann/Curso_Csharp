@@ -5,7 +5,8 @@ namespace Prova
 {
     public class ProvaTest
     {
-        [Fact]
+        [Theory]
+        [InlineData]
         public void deve_retornar_o_total_de_dinheiro_que_o_usuario_ganha_num_dia_trabalhando()
         {
             var letras = new List<string>{"c", "e"};
