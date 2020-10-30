@@ -14,10 +14,8 @@ namespace Prova
             const int minutesInHours = 60;
 
             var minutesPrice = hourPrice / minutesInHours;
-            var totalWorked = minutesWorked + hoursWorked;
-            var totalPrice = minutesPrice + hourPrice;
-            
-            return totalCigarettesSmoked * cigarettesPrice; 
+            var totalWorked = minutesWorked + (hoursWorked * minutesInHours);
+            return minutesPrice * totalWorked;
         }
         public string Prova2(List<string> letras)
         //2- Solicite ao usuário que informe uma palavra qualquer, porém ele deve digitar uma letra por vez. Quando o usuário informar a palavra “Finalizar”, a aplicação deve apresentar a palavra inteira.

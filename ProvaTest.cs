@@ -7,14 +7,14 @@ namespace Prova
     {
         [Theory]
         [InlineData(30, 8, 20, 170)]
-        [InlineData(25, 20, 7, 63874.99999999999)]
+        [InlineData(30, 8, 60, 510)]
         public void should_return_the_total_money_received_in_a_day_worked(double minutesWorked, double hoursWorked, double hourPrice, double expected)
         //Solicite ao usuário que informe quantas horas e minutos ele trabalha por dia e qual o valor/hora de seu serviço.
         //Imprima quanto dinheiro ele ganha ao longo de um dia trabalhado. 
         //A mensagem impressa ao usuário deve ter, no máximo, duas casas após a vírgula.
         {
             // Dado / Setup
-            var exercises = new Exercises();
+            var exercises = new Prova();
             
             // Quando / Ação
             var expectedValue = exercises.Prova1(minutesWorked, hoursWorked, hourPrice);
