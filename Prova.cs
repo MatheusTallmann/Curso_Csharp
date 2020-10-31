@@ -32,5 +32,17 @@ namespace Prova
 
             // return String.Join("", letras);
         }
+        public List<string> Prova3(List<string> nomes, List<string> casados, List<string> solteiros)
+        // Solicite para 5 usuários que informem seus nomes e se são solteiros. 
+        // Ao final apresente o nome de todos os usuários solteiros.
+        {
+            for (int i = 0; i < nomes.Count; i++)
+            {
+                if (nomes[i] == )
+                {
+                    
+                }
+            }
+        }
     }
 }
