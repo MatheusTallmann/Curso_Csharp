@@ -39,15 +39,15 @@ namespace Prova
         }
         
         [Theory]
-        [InlineData(new string[5]{"João","Silmar","Rodrigo","Vinicius","Matheus"}, new string[3]{"João","Silmar","Rodrigo"}, new string[2]{"Vinicius","Matheus"}]
-        public void question_three(string[] nomes, string[] casados, string[] solteiros)
+        [InlineData(new string[5]{"João","Silmar","Rodrigo","Vinicius","Matheus"}, new string[5]{false, false, false, true, true}]
+        public void question_three(string[] nomes, bool[] solteiros)
         //Solicite para 5 usuários que informem seus nomes e se são solteiros. Ao final apresente o nome de todos os usuários solteiros.
         {
             // Dado / Setup
             var exercises = new Prova();
             
             // Quando / Ação
-            var returnedValue = exercises.Prova3(nomes.ToList(), casados.ToList(), solteiros.ToList());
+            var returnedValue = exercises.Prova3(nomes.ToList(), solteiros.ToList());
 
             //Deve / Asserção
             Assert.Equal(expected, returnedValue);
