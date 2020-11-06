@@ -18,29 +18,50 @@ namespace Prova
             return minutesPrice * totalWorked;
         }
         public string Prova2(List<string> letras)
-        //2- Solicite ao usuário que informe uma palavra qualquer, porém ele deve digitar uma letra por vez. Quando o usuário informar a palavra “Finalizar”, a aplicação deve apresentar a palavra inteira.
+        //2- Solicite ao usuário que informe uma palavra qualquer, porém ele deve digitar uma letra por vez. 
+        //Quando o usuário informar a palavra “Finalizar”, a aplicação deve apresentar a palavra inteira.
         {
-            var palavra = new StringBuilder();
-
+            var palavra = "";
+            
             foreach (var item in letras)
             {
-                palavra.Append(item);
+                if (item == "Finalizar")
+                {
+                    return palavra;
+                }
+                
+                palavra += item;
             }
 
+            return palavra;
 
-            return palavra.ToString();
+            // var palavra = new StringBuilder();
+
+            // foreach (var item in letras)
+            // {
+            //     palavra.Append(item);
+            // }
+
+
+            // return palavra.ToString();
 
             // return String.Join("", letras);
         }
-        public List<string> Prova3(List<string> nomes, List<bool> solteiros)
+        public List<string> Prova3(List<string> nomes, List<string> solteirosOuCasados)
         // Solicite para 5 usuários que informem seus nomes e se são solteiros. 
         // Ao final apresente o nome de todos os usuários solteiros.
         {
+            var solteiros = new List<string>();
+
             for (int i = 0; i < nomes.Count; i++)
             {
-                names[i] = solteiros[i];
+                if (solteirosOuCasados[i] == "Solteiro")
+                {
+                    solteiros.Add(nomes[i]);
+                }
             }
-            
+
+            return solteiros;
         }
     }
 }
