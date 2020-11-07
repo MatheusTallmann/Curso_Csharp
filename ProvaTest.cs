@@ -27,7 +27,7 @@ namespace Prova
         [Theory]
         [InlineData(new string[3]{"c","e","l"}, "cel")]
         [InlineData(new string[7]{"M","a","t","h","e","u","s"}, "Matheus")]
-        [InlineData(new string[1]{"Finalizar"}, "Finalizar")]
+        [InlineData(new string[1]{"Finalizar"}, "")]
         public void question_two(string[] letras, string expected)
         {
             // Dado / Setup
@@ -56,14 +56,54 @@ namespace Prova
             Assert.Equal(expected, returnedValue);
         }
         [Theory]
-        [InlineData(new string[5]{"João","Silmar","Rodrigo","Vinicius","Matheus"}, new string[5]{"Casado","Casado","Casado","Solteiro","Solteiro"}, 
-        new string[2]{"Vinicius", "Matheus"})]
-        public void question_four(string[] nomes, string[] solteirosOuCasados, string[] expected)
+        [InlineData(2004, "Menor de idade")]
+        [InlineData(2000, "Maior de idade")]
+        public void question_four(double anoDeNascimento, string expected)
         //Solicite ao usuário seu ano de nascimento e imprima se ele é ou não maior de idade. 
         //Caso o usuário digite um valor inválido, a aplicação deve pedir que ele digite novamente.
         {
+            // Dado / Setup
+            var exercises = new Prova();
+            
+            // Quando / Ação
+            var returnedValue = exercises.Prova4(anoDeNascimento);
 
+            //Deve / Asserção
+            Assert.Equal(expected, returnedValue);
         }
 
+        [Theory]
+        [InlineData(new string[5]{"1","2","3","4","5"}, new double[5]{1,2,3,4,5})]
+        [InlineData(new string[5]{"1","f","3","4","5"}, new double[4]{1,3,4,5})]
+        public void question_five(string[] numbers, double[] expected)
+        //Solicite ao usuário que informe 5 números e armazene em um array. Toda vez que o usuário digitar um valor inválido, 
+        //a aplicação deverá armazenas “null” no índice correspondente. Ao final, imprimir apenas os números válidos.
+        {
+            // Dado / Setup
+            var exercises = new Prova();
+            
+            // Quando / Ação
+            var returnedValue = exercises.Prova5(numbers.ToList());
+
+            //Deve / Asserção
+            Assert.Equal(expected, returnedValue);
+        }
+
+        [Theory]
+        [InlineData(new double[5]{1000,1000,1000,1000,1000}, 1000)]
+        public void question_six(double[] salario, double expected)
+        //Calcule e apresente a média salarial dos funcionários de uma empresa qualquer. 
+        //A aplicação será encerrada quando o usuário digitar a palavra "calcular". 
+        //Caso o usuário digite um valor negativo então a aplicação deve pedir seu salário novamente.
+        {
+            // Dado / Setup
+            var exercises = new Prova();
+            
+            // Quando / Ação
+            var returnedValue = exercises.Prova6(salario.ToList());
+
+            //Deve / Asserção
+            Assert.Equal(expected, returnedValue);
+        }
     }
 }
