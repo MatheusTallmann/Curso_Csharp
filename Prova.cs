@@ -106,14 +106,15 @@ namespace Prova
         //Caso o usuário digite um valor negativo então a aplicação deve pedir seu salário novamente.
         {
             var totalSalarios = new List<double>();
-            var soma = 0.0;
+            // var soma = 0.0;
+            
             for (int i = 0; i < salarios.Count; i++)
             {
                 try
                 {
                     if (salarios[i] > -1)
                     {
-                        totalSalarios.Add(i);
+                        totalSalarios.Add(salarios[i]);
                     } 
                 }
     
@@ -122,14 +123,63 @@ namespace Prova
 
                 }
             }
-            for (int i = 0; i < totalSalarios.Count; i++)
+
+            // for (int i = 0; i < totalSalarios.Count; i++)
+            // {
+            //     soma += totalSalarios[i];
+            // }
+
+            // return (double)soma / totalSalarios.Count();
+
+            return totalSalarios.Sum() / totalSalarios.Count;
+        }
+
+        public string Prova7(List<String> ufUsers)
+        //Pergunte para 5 usuários a UF que representa o estado onde ele nasceu. 
+        //A aplicação deverá mostrar uma lista com todas as opções para o usuário, 
+        //e cada uma deve conter um ID numérico, o usuário digitará o número que representa sua UF.
+        //Ao final a aplicação deverá mostrar a porcentagem de usuários que nasceram em Santa Catarina.
+        {
+            var count = 0.0;
+
+            // for (int i = 0; i < ufUsers.Count; i++)
+            // {
+            //     if (ufUsers[i] == "42")
+            //     {
+            //         count += 1;
+            //     }
+            // }
+            count = ufUsers.Where(item => item == "42").Count();
+
+            return $"{(count * 100) / ufUsers.Count}%";
+        }
+        
+        public List<string> Prova8(List<string> matutino, List<string> vespertino)
+        //Solicite ao usuário que digite o nome dos alunos das turmas Matutino e Vespertino. Cada turma possui 5 alunos. 
+        //Armazene os nomes em dois arrays distintos de forma alternada, ou seja, o primeiro nome deve ser armazenado no array da Matutino, 
+        //o segundo nome deve ser armazenado no array da Turma Vespertino, assim por diante. 
+        //Ao final imprima apenas os nomes dos alunos que estão estudando em período integral. 
+        //Caso nenhum aluno esteja cadastrado em ambas as turmas, imprimir a mensagem “Todos os alunos estudam em meio período”.
+        {
+            var alunoIntegral = new List<string>();
+
+            foreach (var item in matutino)
             {
-                soma += totalSalarios[i];
+                for (int i = 0; i < vespertino.Count; i++)
+                {
+                    if (item == vespertino[i])
+                    {
+                        alunoIntegral.Add(item);            
+                    }
+                }
+            }
+            
+            if (alunoIntegral.Count == 0)
+            {
+                alunoIntegral.Add("Todos os alunos estudam em meio período");
             }
 
-            return soma / totalSalarios.Count;
-
-            // return totalSalarios.Sum() / totalSalarios.Count;
+            return alunoIntegral;
         }
     }
 }

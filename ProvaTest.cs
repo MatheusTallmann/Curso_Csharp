@@ -59,8 +59,8 @@ namespace Prova
         [InlineData(2004, "Menor de idade")]
         [InlineData(2000, "Maior de idade")]
         public void question_four(double anoDeNascimento, string expected)
-        //Solicite ao usuário seu ano de nascimento e imprima se ele é ou não maior de idade. 
-        //Caso o usuário digite um valor inválido, a aplicação deve pedir que ele digite novamente.
+        //Solicite ao usuário seu ano de nascimento e imprima se ele é ou não ma de idade. 
+        //Caso o usuário digite um valor inválido, a aplicaç deve que  digite no.
         {
             // Dado / Setup
             var exercises = new Prova();
@@ -90,6 +90,7 @@ namespace Prova
         }
 
         [Theory]
+        [InlineData(new double[5]{10,10,10,10,10}, 10)]
         [InlineData(new double[5]{1000,1000,1000,1000,1000}, 1000)]
         public void question_six(double[] salario, double expected)
         //Calcule e apresente a média salarial dos funcionários de uma empresa qualquer. 
@@ -101,6 +102,48 @@ namespace Prova
             
             // Quando / Ação
             var returnedValue = exercises.Prova6(salario.ToList());
+
+            //Deve / Asserção
+            Assert.Equal(expected, returnedValue);
+        }
+        
+        [Theory]
+        [InlineData(new string[5]{"42","50","42","29","21"}, "40%")]
+        [InlineData(new string[8]{"13","15","51","50","52","22","53","32"}, "0%")]
+        [InlineData(new string[8]{"42","42","42","42","42","42","42","42"}, "100%")]
+        public void question_seven(string[] ufUsers, string porcentagem)
+        //Pergunte para 5 usuários a UF que representa o estado onde ele nasceu. 
+        //A aplicação deverá mostrar uma lista com todas as opções para o usuário, 
+        //e cada uma deve conter um ID numérico, o usuário digitará o número que representa sua UF.
+        //Ao final a aplicação deverá mostrar a porcentagem de usuários que nasceram em Santa Catarina.
+        {
+            // Dado / Setup
+            var exercises = new Prova();
+            
+            // Quando / Ação
+            var returnedValue = exercises.Prova7(ufUsers.ToList());
+
+            //Deve / Asserção
+            Assert.Equal(porcentagem, returnedValue);
+        }        
+        
+        [Theory]
+        [InlineData(new string[5]{"Matheus","Vinicíus","Marcos","André","Kauan"}, new string[5]{"Matheus","Vinicíus","Marcos","André","Kauan"},
+        new string[5]{"Matheus","Vinicíus","Marcos","André","Kauan"})]
+        [InlineData(new string[5]{"Matheus","Vinicíus","Marcos","André","Kauan"}, new string[5]{"Maria","Jana","Marcela","Andréia","Kauana"},
+        new string[1]{"Todos os alunos estudam em meio período"})]
+        public void question_eight(string[] matutino, string[] vespertino, string[] expected)
+        //Solicite ao usuário que digite o nome dos alunos das turmas Matutino e Vespertino. Cada turma possui 5 alunos. 
+        //Armazene os nomes em dois arrays distintos de forma alternada, ou seja, o primeiro nome deve ser armazenado no array da Matutino, 
+        //o segundo nome deve ser armazenado no array da Turma Vespertino, assim por diante. 
+        //Ao final imprima apenas os nomes dos alunos que estão estudando em período integral. 
+        //Caso nenhum aluno esteja cadastrado em ambas as turmas, imprimir a mensagem “Todos os alunos estudam em meio período”.
+        {
+            // Dado / Setup
+            var exercises = new Prova();
+            
+            // Quando / Ação
+            var returnedValue = exercises.Prova8(matutino.ToList(), vespertino.ToList());
 
             //Deve / Asserção
             Assert.Equal(expected, returnedValue);
